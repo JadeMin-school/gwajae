@@ -7,6 +7,8 @@ import Search from "./components/Search.tsx";
 import NewUser from "./components/NewUser.tsx";
 import UserList from "./components/UserList.tsx";
 
+import "./App.css";
+
 
 
 export default function App() {
