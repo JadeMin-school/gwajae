@@ -1,11 +1,13 @@
+import type { MouseEventHandler } from 'react';
 import type { User } from "../User.d.ts";
+import type { HandleAddUser } from "../EventHandler.d.ts";
 
 import { useState } from 'react';
 
 
 
 interface Props {
-	handleAddUser: (newUser: User) => void;
+	handleAddUser: HandleAddUser;
 }
 
 export default function NewUser({ handleAddUser }: Props) {
@@ -18,16 +20,14 @@ export default function NewUser({ handleAddUser }: Props) {
 		}
 	});
 
-	const onChange = (target: keyof User, value: any) => {
-		if (target === "email") {
-		}
 
+	const onChange = (target: keyof User, value: any) => {
 		setNewUser({
 			...newUser,
 			[target]: value
 		});
 	}
-	const onClick = () => {
+	const onClick: MouseEventHandler<HTMLButtonElement> = () => {
 		if (!newUser.name.trim() || !newUser.email.trim() || !newUser.company.name.trim()) {
 			alert("모든 필드를 채워주세요.");
 			return;
@@ -36,7 +36,6 @@ export default function NewUser({ handleAddUser }: Props) {
 			alert("유효한 이메일 주소를 입력하세요.");
 			return;
 		}
-
 
 		handleAddUser(newUser);
 	}
@@ -67,7 +66,7 @@ export default function NewUser({ handleAddUser }: Props) {
 				style={{ marginRight: '0.5rem' }}
 			/>
 			<button onClick={onClick}>
-				Add
+				추가
 			</button>
 		</>
 	);

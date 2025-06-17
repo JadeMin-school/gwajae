@@ -1,5 +1,6 @@
-import type { ChangeEventHandler, MouseEventHandler } from 'react';
+import type { ChangeEventHandler } from 'react';
 import type { User } from "./User.d.ts";
+import type { HandleDelete, HandleAddUser } from "./EventHandler.d.ts";
 
 import { useEffect, useState, useRef } from 'react';
 
@@ -16,6 +17,7 @@ export default function App() {
 	const [search, setSearch] = useState('');
 	const userCount = useRef(0);
 
+
 	useEffect(() => {
 		(async () => {
 			const response = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -29,12 +31,10 @@ export default function App() {
 	const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
 		setSearch(e.target.value);
 	}
-
-	const handleDelete = (id: number) => {
-		setUsers(users.filter(user => user.id !== id));
+	const handleDelete: HandleDelete = (target) => {
+		setUsers(users.filter(user => user.id !== target.id));
 	}
-
-	const handleAddUser = (newUser: User) => {
+	const handleAddUser: HandleAddUser = (newUser) => {
 		setUsers([...users, { ...newUser, id: ++userCount.current }]);
 	}
 
@@ -57,4 +57,4 @@ export default function App() {
 			/>
 		</>
 	);
-};
+}

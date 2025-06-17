@@ -1,9 +1,10 @@
 import type { User } from "../User.d.ts";
+import type { HandleDelete } from "../EventHandler.d.ts";
 
 
 
-type Props = {
-	handleDelete: (id: number) => void;
+interface Props {
+	handleDelete: HandleDelete;
 	filteredUsers: User[];
 }
 
@@ -26,10 +27,10 @@ export default function UserList({ handleDelete, filteredUsers }: Props) {
 							<small>Company: { user.company.name }</small>
 						</div>
 						<button
-							onClick={() => handleDelete(user.id)}
+							onClick={() => handleDelete(user)}
 							style={{ marginLeft: '1rem' }}
 						>
-							Delete
+							삭제
 						</button>
 					</div>
 				))

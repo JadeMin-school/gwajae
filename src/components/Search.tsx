@@ -17,6 +17,7 @@ export default function Search({ handleSearch }: Props) {
 		handleSearch(e);
 	}
 
+	
 	return (
 		<>
 			<h1>사용자 목록</h1>
