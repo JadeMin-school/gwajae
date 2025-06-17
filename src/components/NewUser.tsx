@@ -19,10 +19,26 @@ export default function NewUser({ handleAddUser }: Props) {
 	});
 
 	const onChange = (target: keyof User, value: any) => {
+		if (target === "email") {
+		}
+
 		setNewUser({
 			...newUser,
 			[target]: value
 		});
+	}
+	const onClick = () => {
+		if (!newUser.name.trim() || !newUser.email.trim() || !newUser.company.name.trim()) {
+			alert("모든 필드를 채워주세요.");
+			return;
+		}
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newUser.email)) {
+			alert("유효한 이메일 주소를 입력하세요.");
+			return;
+		}
+
+
+		handleAddUser(newUser);
 	}
 
 
@@ -50,7 +66,7 @@ export default function NewUser({ handleAddUser }: Props) {
 				onChange={(e) => onChange('company', { name: e.target.value })}
 				style={{ marginRight: '0.5rem' }}
 			/>
-			<button onClick={() => handleAddUser(newUser)}>
+			<button onClick={onClick}>
 				Add
 			</button>
 		</>
