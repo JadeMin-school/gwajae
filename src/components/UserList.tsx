@@ -1,10 +1,10 @@
-import type { User } from "../User.d.ts";
-import type { HandleDelete } from "../EventHandler.d.ts";
+import type { User } from "../@types/User.d.ts";
+import type { DeleteHandler } from "../@types/EventHandler.d.ts";
 
 
 
 interface Props {
-	handleDelete: HandleDelete;
+	handleDelete: DeleteHandler;
 	filteredUsers: User[];
 }
 

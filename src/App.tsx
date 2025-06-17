@@ -1,6 +1,6 @@
 import type { ChangeEventHandler } from 'react';
-import type { User } from "./User.d.ts";
-import type { HandleDelete, HandleAddUser } from "./EventHandler.d.ts";
+import type { User } from "./@types/User.d.ts";
+import type { DeleteHandler, AddUserHandler } from "./@types/EventHandler.d.ts";
 
 import { useEffect, useState, useRef } from 'react';
 
@@ -31,10 +31,10 @@ export default function App() {
 	const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
 		setSearch(e.target.value);
 	}
-	const handleDelete: HandleDelete = (target) => {
+	const handleDelete: DeleteHandler = (target) => {
 		setUsers(users.filter(user => user.id !== target.id));
 	}
-	const handleAddUser: HandleAddUser = (newUser) => {
+	const handleAddUser: AddUserHandler = (newUser) => {
 		setUsers([...users, { ...newUser, id: ++userCount.current }]);
 	}
 

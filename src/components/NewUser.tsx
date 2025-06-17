@@ -1,13 +1,13 @@
 import type { MouseEventHandler } from 'react';
-import type { User } from "../User.d.ts";
-import type { HandleAddUser } from "../EventHandler.d.ts";
+import type { User } from "../@types/User.d.ts";
+import type { AddUserHandler } from "../@types/EventHandler.d.ts";
 
 import { useState } from 'react';
 
 
 
 interface Props {
-	handleAddUser: HandleAddUser;
+	handleAddUser: AddUserHandler;
 }
 
 export default function NewUser({ handleAddUser }: Props) {
