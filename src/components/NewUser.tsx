@@ -26,7 +26,7 @@ export default function NewUser({ handleAddUser }: Props) {
 			...newUser,
 			[target]: value
 		});
-	}
+	};
 	const onClick: MouseEventHandler<HTMLButtonElement> = () => {
 		if (!newUser.name.trim() || !newUser.email.trim() || !newUser.company.name.trim()) {
 			alert("모든 필드를 채워주세요.");
@@ -38,7 +38,7 @@ export default function NewUser({ handleAddUser }: Props) {
 		}
 
 		handleAddUser(newUser);
-	}
+	};
 
 
 	return (
